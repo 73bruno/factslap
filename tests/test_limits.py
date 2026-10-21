@@ -113,6 +113,6 @@ async def test_redis_down_fails_closed():
 
 def test_ips_are_hashed_and_cache_key_ignores_case_and_spacing():
     assert "4.4.4.4" not in hash_ip("4.4.4.4", "salt")
-    assert cache_key("Sugar makes kids  hyperactive.", "casual", "check") == cache_key(
-        "sugar makes kids hyperactive", "casual", "check")
-    assert cache_key("x claim", "casual", "check") != cache_key("x claim", "aggressive", "check")
+    assert cache_key("Sugar makes kids  hyperactive.", "casual") == cache_key(
+        "sugar makes kids hyperactive", "casual")
+    assert cache_key("x claim", "casual") != cache_key("x claim", "aggressive")

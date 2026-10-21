@@ -12,7 +12,6 @@ from factslap.models import (
     Answer,
     ClaimType,
     Evidence,
-    Intention,
     Passage,
     Plan,
     SourceName,
@@ -179,10 +178,10 @@ async def write_answer(
 
 
 async def restyle(
-    client: httpx.AsyncClient, llm: LLM, answer: Answer, tone: Tone, intention: Intention, verdict: Verdict, lang: str,
+    client: httpx.AsyncClient, llm: LLM, answer: Answer, tone: Tone, verdict: Verdict, lang: str,
     meter: CostMeter, model: str | None = None,
 ) -> Answer:
-    user = prompts.style_user(answer.text, answer.short, tone, intention, verdict.label.value, lang)
+    user = prompts.style_user(answer.text, answer.short, tone, verdict.label.value, lang)
     out = await llm.generate(client, prompts.STYLE_SYSTEM, user, AnswerOut, meter, 0.7, model)
     return Answer(text=out.text.strip(), short=out.short.strip(), cited_refs=cited_refs(out.text + " " + out.short))
 

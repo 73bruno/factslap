@@ -119,16 +119,8 @@ class Tone(str, Enum):
     AGGRESSIVE = "aggressive"  # "win the argument" mode: witty, never insulting
 
 
-class Intention(str, Enum):
-    """What the user wants to do with the answer. Only shapes the wording, never the verdict."""
-
-    CHECK = "check"
-    VALIDATE = "validate"
-    DEBUNK = "debunk"
-
-
 DISCLAIMER = (
-    "The verdict is decided first, from the evidence alone. Tone and intention only change the wording, "
+    "The verdict is decided first, from the evidence alone. The tone only changes the wording, "
     "never the verdict or the sources. FactSlap summarises published research and can be wrong; "
     "it is not medical, legal or financial advice."
 )
@@ -170,7 +162,6 @@ class CheckResult(BaseModel):
     styled_answer: Answer | None = None  # same facts, chosen tone
     verification: VerificationReport
     steps: list[StepEvent] = Field(default_factory=list)
-    intention: Intention = Intention.CHECK
     disclaimer: str = DISCLAIMER
     share_id: str | None = None  # short id for the public link /c/<id>, set by the API
     cost_usd: float = 0.0

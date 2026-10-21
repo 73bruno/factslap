@@ -64,9 +64,9 @@ def hash_ip(ip: str | None, salt: str) -> str:
     return hashlib.sha256(f"{salt}|{ip or 'unknown'}".encode()).hexdigest()[:20]
 
 
-def cache_key(claim: str, tone: str | None, intention: str) -> str:
+def cache_key(claim: str, tone: str | None) -> str:
     normal = " ".join(unicodedata.normalize("NFKC", claim).lower().split()).rstrip(".!?")
-    return "cache:" + hashlib.sha256(f"{normal}|{tone}|{intention}".encode()).hexdigest()[:32]
+    return "cache:" + hashlib.sha256(f"{normal}|{tone}".encode()).hexdigest()[:32]
 
 
 @dataclass

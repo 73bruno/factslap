@@ -10,7 +10,7 @@ Live at [factslap.app](https://www.factslap.app).
 
 ```mermaid
 flowchart TD
-    A[Claim + tone + intention] --> B{Checked in the last 7 days?}
+    A[Claim + tone] --> B{Checked in the last 7 days?}
     B -- yes --> Z[Result]
     B -- no --> C[Plan<br/>sub-claims, search queries, which sources]
     C --> D[Search in parallel<br/>OpenAlex · Semantic Scholar · Europe PMC · Google Fact Check<br/>Wikipedia · World Bank · Open Food Facts · own index]
@@ -30,13 +30,13 @@ flowchart TD
 - **Read** (`stages.py`): each passage gets a stance and one sentence quoted word for word. If the quote isn't in the passage, the passage doesn't count.
 - **Verdict** (`stages.decide`): no LLM. Supporting and refuting weight, by study type (meta-analysis > trial > observational…). One side must clearly win, with at least two independent papers; otherwise the verdict is *not enough evidence*. Confidence is agreement × strength, and the explanation says how it was reached.
 - **Answer and verify** (`verify.py`): the answer explains the verdict it is given and cites `[n]` for every factual sentence. Plain code checks every citation, quote and number before the answer is shown.
-- **Tone**: the intention (check, validate, debunk) and the tone only change the wording. The rewrite is thrown away if it changes a citation or a number.
+- **Tone**: academic, casual or Mic Drop only changes the wording. The rewrite is thrown away if it changes a citation or a number.
 
 Models: `gpt-5.6-luna` for planning and reranking, `gpt-5.6-terra` for reading, answering and tone, `gpt-5.4-mini` as fallback and `text-embedding-3-small` for embeddings. All can be changed in `.env`.
 
 ## Design decisions
 
-- **The verdict comes before the tone.** The first version put "debunk this" into the verdict prompt. Here the verdict is computed from the evidence alone, and tone is a separate, checked rewrite.
+- **The verdict comes before the tone.** The first version let the user pick a goal ("debunk this") and put it into the verdict prompt. Here there is no goal to pick: the verdict is computed from the evidence alone, and tone is a separate, checked rewrite.
 - **Correlation is not causation.** The reader prompt says an association alone does not prove a causal claim; the first version said sugar makes kids hyperactive because it read observational studies as proof.
 - **Untrusted text stays data.** Claims and retrieved passages are wrapped in tags and the model is told to ignore instructions inside them.
 - **Optional services degrade gracefully.** No embeddings: BM25 and source order only. Reranker off: fused ranking. No index: live sources only.
@@ -49,7 +49,7 @@ A check costs about 2 cents, so the public API has hard limits, all enforced ato
 - one check per person per hour (IPs are stored only as salted hashes);
 - 50 checks a day for everyone together, and at most 4 at the same time;
 - a daily budget: each check reserves its worst-case cost up front and is corrected to the real cost afterwards;
-- the same claim, tone and intention within 7 days is answered from a cache at no cost;
+- the same claim and tone within 7 days is answered from a cache at no cost;
 - if Redis is unreachable the API refuses (fail closed), and requests are only accepted from the site's own origin.
 
 ## Share links
@@ -82,7 +82,7 @@ uvicorn factslap.api:create_app --factory --port 8000
 npm install && npm run dev   # http://localhost:5173, proxies /api to :8000
 ```
 
-Without the Upstash variables the local API runs without limits, cache or share links (on Vercel it refuses instead). API: `POST /api/v2/check-stream` streams each step as Server-Sent Events and then the result; `POST /api/v2/check` returns the result only. Both take `{"claim", "tone", "intention"}`.
+Without the Upstash variables the local API runs without limits, cache or share links (on Vercel it refuses instead). API: `POST /api/v2/check-stream` streams each step as Server-Sent Events and then the result; `POST /api/v2/check` returns the result only. Both take `{"claim", "tone"}`.
 
 To deploy on Vercel, set the variables from `.env.example` in the project. `vercel.json` builds the Vite app and serves the FastAPI app from one Python function (`api/index.py`). The own index and semantic cache are optional: create a Supabase project and run `supabase/migrations/0001_index.sql` (pgvector, full-text search and a `hybrid_search` function with RRF).
 

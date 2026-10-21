@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field, field_validator
 from factslap import share
 from factslap.config import Settings
 from factslap.limits import Guard, LimitExceeded, Redis, cache_key
-from factslap.models import CheckResult, Intention, Tone
+from factslap.models import CheckResult, Tone
 from factslap.net import new_client
 from factslap.pipeline import FactSlap
 
@@ -42,7 +42,6 @@ def get_guard() -> Guard | None:
 class CheckRequest(BaseModel):
     claim: str = Field(min_length=5, max_length=300)
     tone: Tone | None = Tone.CASUAL
-    intention: Intention = Intention.CHECK
 
     @field_validator("claim")
     @classmethod
@@ -77,7 +76,7 @@ def limit_response(exc: LimitExceeded) -> JSONResponse:
 async def check_stream(body: CheckRequest, request: Request):
     check_origin(request)
     guard = get_guard()
-    key = cache_key(body.claim, body.tone.value if body.tone else None, body.intention.value)
+    key = cache_key(body.claim, body.tone.value if body.tone else None)
     async with new_client() as client:
         if guard is not None:
             cached = await guard.cached(client, key)
@@ -103,8 +102,7 @@ async def check_stream(body: CheckRequest, request: Request):
         cost, ok = 0.0, False
         async with new_client() as client:
             try:
-                async for event in get_factslap().run(body.claim, body.tone, intention=body.intention,
-                                                      ip=client_ip(request), client=client):
+                async for event in get_factslap().run(body.claim, body.tone, ip=client_ip(request), client=client):
                     if isinstance(event, CheckResult):
                         cost, ok = event.cost_usd, True
                         payload = event.model_dump(mode="json")

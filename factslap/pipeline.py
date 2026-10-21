@@ -15,7 +15,6 @@ from factslap.config import Settings
 from factslap.llm.client import LLM, CostMeter, OpenAIEmbedder, build_llm
 from factslap.models import (
     CheckResult,
-    Intention,
     Passage,
     SourceName,
     Stance,
@@ -66,7 +65,6 @@ class FactSlap:
         claim: str,
         tone: Tone | None = Tone.CASUAL,
         *,
-        intention: Intention = Intention.CHECK,
         ip: str | None = None,
         use_cache: bool = True,
         client: httpx.AsyncClient | None = None,
@@ -74,13 +72,13 @@ class FactSlap:
         own_client = client is None
         client = client or new_client(self.settings.source_timeout_s)
         try:
-            async for event in self._run(client, claim.strip(), tone, intention, ip, use_cache):
+            async for event in self._run(client, claim.strip(), tone, ip, use_cache):
                 yield event
         finally:
             if own_client:
                 await client.aclose()
 
-    async def _run(self, client, claim, tone, intention, ip, use_cache) -> AsyncIterator[StepEvent | CheckResult]:
+    async def _run(self, client, claim, tone, ip, use_cache) -> AsyncIterator[StepEvent | CheckResult]:
         s = self.settings
         started = time.perf_counter()
         meter = CostMeter()
@@ -137,7 +135,7 @@ class FactSlap:
         counts = {st.value: sum(e.stance == st for e in evidence) for st in Stance if st != Stance.IRRELEVANT}
         yield step("evidence", "Read the evidence", t0, **counts)
 
-        # 5. verdict: a formula over stances and study quality, no tone and no user intention involved
+        # 5. verdict: a formula over stances and study quality, no tone involved
         t0 = time.perf_counter()
         verdict = stages.decide(evidence)
         yield step("verdict", verdict.label.value, t0, confidence=verdict.confidence, why=verdict.explanation)
@@ -154,24 +152,23 @@ class FactSlap:
         yield step("verify", "Checked citations and numbers" if report.passed else "Some checks failed", t0,
                    checks=[c.model_dump() for c in report.checks])
 
-        # 8. tone and intention: reword only; if the rewrite touches citations or numbers, keep the neutral text
+        # 8. tone: reword only; if the rewrite touches citations or numbers, keep the neutral text
         styled = None
-        if (tone is not None or intention != Intention.CHECK) and evidence:
-            tone = tone or Tone.CASUAL
+        if tone is not None and evidence:
             t0 = time.perf_counter()
             try:
-                candidate = await stages.restyle(client, self.llm, answer, tone, intention, verdict, plan.lang, meter,
+                candidate = await stages.restyle(client, self.llm, answer, tone, verdict, plan.lang, meter,
                                                  s.answer_model)
                 if same_facts(answer, candidate):
                     styled = candidate
-                yield step("tone", f"Tone: {tone.value}, intention: {intention.value}" if styled
+                yield step("tone", f"Tone: {tone.value}" if styled
                            else "Kept the neutral wording", t0)
             except Exception as exc:
                 yield step("tone", "Kept the neutral wording", t0, error=str(exc)[:200])
 
         result = CheckResult(
             claim=claim, lang=plan.lang, plan=plan, verdict=verdict, evidence=evidence, answer=answer,
-            styled_answer=styled, verification=report, steps=steps, intention=intention, cost_usd=round(meter.usd, 5),
+            styled_answer=styled, verification=report, steps=steps, cost_usd=round(meter.usd, 5),
             latency_ms=int((time.perf_counter() - started) * 1000),
         )
         await self._remember(client, result, stats.vectors, ranked, claim_vector, ip)

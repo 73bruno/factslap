@@ -58,4 +58,4 @@ export const STUDY_TYPES = {
 }
 
 export const DISCLAIMER =
-  'The verdict is decided first, from the evidence alone. Tone and intention only change the wording, never the verdict or the sources. FactSlap summarises published research and can be wrong; it is not medical, legal or financial advice.'
+  'The verdict is decided first, from the evidence alone. The tone only changes the wording, never the verdict or the sources. FactSlap summarises published research and can be wrong; it is not medical, legal or financial advice.'

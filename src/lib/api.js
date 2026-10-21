@@ -14,13 +14,13 @@ export const shareUrl = (id) => `https://www.factslap.app/c/${id}`
  * onStep(step) is called for every pipeline step; resolves with the final result.
  * Throws an Error with a user-facing message (rate limits, budget, network…).
  */
-export async function runCheck({ claim, tone, intention }, onStep) {
+export async function runCheck({ claim, tone }, onStep) {
   let response
   try {
     response = await fetch(`${API_URL}/api/v2/check-stream`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ claim, tone, intention }),
+      body: JSON.stringify({ claim, tone }),
     })
   } catch {
     throw new Error("Can't reach the server. Check your connection and try again.")

@@ -8,12 +8,6 @@ import { loadShared, runCheck } from './lib/api'
 import { DISCLAIMER } from './lib/labels'
 import exampleCheck from './data/example-check.json'
 
-const INTENTIONS = [
-  { value: 'validate', label: 'Validate', sublabel: "I'm right", icon: '/iconos/verificar.webp', active: 'border-emerald-500 bg-emerald-500/15 text-emerald-300' },
-  { value: 'check', label: 'Investigate', sublabel: 'Just curious', icon: '/iconos/comprobar.webp', active: 'border-indigo-500 bg-indigo-500/15 text-indigo-300' },
-  { value: 'debunk', label: 'Debunk', sublabel: "They're wrong", icon: '/iconos/refutar.webp', active: 'border-red-500 bg-red-500/15 text-red-300' },
-]
-
 const TONES = [
   { value: 'academic', label: 'Academic', sublabel: 'Formal', icon: '/iconos/academico.webp' },
   { value: 'casual', label: 'Casual', sublabel: 'Friendly', icon: '/iconos/casual.webp' },
@@ -26,7 +20,6 @@ const PAGES = { '/privacy': 'privacy', '/terms': 'terms', '/how-it-works': 'how'
 
 export default function App() {
   const [claim, setClaim] = useState('')
-  const [intention, setIntention] = useState('check')
   const [tone, setTone] = useState('casual')
   const [loading, setLoading] = useState(false)
   const [steps, setSteps] = useState([])
@@ -81,7 +74,7 @@ export default function App() {
     setResult(null)
     setSteps([])
     try {
-      const data = await runCheck({ claim: text, tone, intention }, (step) => setSteps((list) => [...list, step]))
+      const data = await runCheck({ claim: text, tone }, (step) => setSteps((list) => [...list, step]))
       setResult(data)
     } catch (err) {
       setError(err.message)
@@ -149,20 +142,6 @@ export default function App() {
                 </div>
 
                 <div className="glass-card rounded-xl p-3 md:p-4">
-                  <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-slate-400">Your goal</span>
-                  <div className="grid grid-cols-3 gap-2">
-                    {INTENTIONS.map((opt) => (
-                      <button key={opt.value} type="button" onClick={() => setIntention(opt.value)}
-                        className={`rounded-lg border-2 px-2 py-3 text-center transition-all duration-200 ${intention === opt.value ? opt.active : 'border-slate-700 bg-slate-800/50 text-slate-400 hover:border-slate-600'}`}>
-                        <img src={opt.icon} alt="" className="mx-auto mb-1 h-8 w-8 object-contain" />
-                        <span className="block text-xs font-medium md:text-sm">{opt.label}</span>
-                        <span className="text-[10px] text-slate-500">{opt.sublabel}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="glass-card rounded-xl p-3 md:p-4">
                   <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-slate-400">Response style</span>
                   <div className="flex gap-2">
                     {TONES.map((opt) => (
@@ -175,7 +154,7 @@ export default function App() {
                     ))}
                   </div>
                   <p className="mt-2 text-[11px] leading-snug text-slate-500">
-                    Your goal and style only change the wording. The verdict is decided first, from the evidence alone.
+                    The style only changes the wording. The verdict is decided first, from the evidence alone.
                   </p>
                 </div>
 

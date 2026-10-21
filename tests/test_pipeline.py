@@ -102,14 +102,11 @@ async def test_tone_never_reaches_the_verdict_stage():
     assert result.styled_answer is not None
 
 
-async def test_intention_shapes_wording_but_never_the_verdict():
-    from factslap.models import Intention
-
-    app, llm = make_app(outputs(styled_text="Sorry, the studies are not on your side: no link [1][2]."))
-    events = [e async for e in app.run(CLAIM, Tone.CASUAL, intention=Intention.VALIDATE)]
-    result = events[-1]
+async def test_tone_rewrite_is_given_the_final_verdict():
+    app, llm = make_app(outputs(styled_text="Sorry, the studies say otherwise: no link [1][2]."))
+    _, result = await run(app, tone=Tone.CASUAL)
     assert result.verdict.label == VerdictLabel.REFUTED
-    assert result.intention == Intention.VALIDATE
+    assert result.styled_answer is not None
     style_prompt = [user for name, user in llm.calls if name == "AnswerOut"][-1]
     assert "verdict (final): refuted" in style_prompt
     assert "evidence" in result.disclaimer

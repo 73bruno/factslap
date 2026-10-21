@@ -3,7 +3,7 @@ const PAGES = {
     title: 'Privacy',
     sections: [
       ['What we receive', [
-        'The claim you type, your tone and intention choices, and your IP address (needed to deliver the page and to apply fair-use limits).',
+        'The claim you type, the response style you choose, and your IP address (needed to deliver the page and to apply fair-use limits).',
       ]],
       ['What we do with it', [
         'Your claim is sent to OpenAI to plan the search, read the evidence and write the answer, and to public research catalogues (OpenAlex, Semantic Scholar, Europe PMC, Google Fact Check Tools, Wikipedia, World Bank, Open Food Facts) as a search query.',
@@ -26,8 +26,8 @@ const PAGES = {
         'FactSlap summarises published research and fact-checks with the help of AI. It can be wrong or incomplete: always read the cited sources before relying on an answer.',
         'It is not medical, legal, financial or any other professional advice.',
       ]],
-      ['Tone and intention', [
-        'The verdict is decided first, from the evidence alone. The tone and intention you choose only change the wording, never the verdict or the sources.',
+      ['Response style', [
+        'The verdict is decided first, from the evidence alone. The response style you choose only changes the wording, never the verdict or the sources.',
       ]],
       ['Fair use', [
         'Free checks are limited per visitor and per day. Automated or abusive use is not allowed and is blocked.',
