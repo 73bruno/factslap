@@ -1,0 +1,20 @@
+# FactSlap - Fact-checking powered by science
+# https://factslap.app
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://factslap.app/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+
+# Bing specific
+User-agent: Bingbot
+Allow: /

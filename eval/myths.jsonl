@@ -1,0 +1,30 @@
+{"id": "myth-brain-10", "claim": "We only use 10% of our brain", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-knuckles", "claim": "Cracking your knuckles causes arthritis", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-sugar-kids", "claim": "Sugar makes children hyperactive", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-carrots", "claim": "Eating carrots gives you better night vision", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-goldfish", "claim": "Goldfish have a three-second memory", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-shaving", "claim": "Shaving makes hair grow back thicker", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-head-heat", "claim": "You lose most of your body heat through your head", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-bulls-red", "claim": "Bulls are enraged by the colour red", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-bats-blind", "claim": "Bats are blind", "label": "refuted", "lang": "en", "demo": true}
+{"id": "myth-dim-light", "claim": "Reading in dim light damages your eyesight", "label": "refuted", "lang": "en", "demo": false}
+{"id": "myth-coffee-growth", "claim": "Drinking coffee stunts children's growth", "label": "refuted", "lang": "en", "demo": false}
+{"id": "myth-alcohol-warm", "claim": "Drinking alcohol warms up your body in the cold", "label": "refuted", "lang": "en", "demo": false}
+{"id": "myth-vaccines-autism", "claim": "Vaccines cause autism", "label": "refuted", "lang": "en", "demo": false}
+{"id": "myth-antibiotics-cold", "claim": "Antibiotics cure the common cold", "label": "refuted", "lang": "en", "demo": false}
+{"id": "myth-microwave", "claim": "Microwaving food makes it radioactive", "label": "refuted", "lang": "en", "demo": false}
+{"id": "fact-smoking", "claim": "Smoking causes lung cancer", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-exercise-diabetes", "claim": "Regular exercise lowers the risk of type 2 diabetes", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-caffeine-alertness", "claim": "Moderate caffeine intake improves alertness", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-sleep-memory", "claim": "Sleep deprivation impairs memory", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-mediterranean", "claim": "A Mediterranean diet reduces cardiovascular events", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-exercise-depression", "claim": "Physical exercise reduces symptoms of depression", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-handwashing", "claim": "Hand washing reduces the spread of respiratory infections", "label": "supported", "lang": "en", "demo": false}
+{"id": "fact-fluoride", "claim": "Fluoride toothpaste reduces tooth decay", "label": "supported", "lang": "en", "demo": false}
+{"id": "es-knuckles", "claim": "Crujirse los dedos provoca artritis", "label": "refuted", "lang": "es", "demo": true}
+{"id": "es-sugar-kids", "claim": "El azúcar hace que los niños sean hiperactivos", "label": "refuted", "lang": "es", "demo": true}
+{"id": "es-brain-10", "claim": "Solo usamos el 10 % del cerebro", "label": "refuted", "lang": "es", "demo": true}
+{"id": "es-antibiotics-flu", "claim": "Los antibióticos curan la gripe", "label": "refuted", "lang": "es", "demo": false}
+{"id": "es-vaccines-autism", "claim": "Las vacunas causan autismo", "label": "refuted", "lang": "es", "demo": false}
+{"id": "es-sleep-memory", "claim": "Dormir poco empeora la memoria", "label": "supported", "lang": "es", "demo": false}
+{"id": "es-exercise-diabetes", "claim": "Hacer ejercicio reduce el riesgo de diabetes tipo 2", "label": "supported", "lang": "es", "demo": false}

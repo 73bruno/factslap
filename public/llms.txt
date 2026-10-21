@@ -1,0 +1,20 @@
+# FactSlap
+> Check a claim against real research. Every sentence cited, every citation checked.
+
+## What it is
+FactSlap is a fact-checking web app built as a retrieval-augmented generation (RAG) pipeline:
+1. Plan: a fast model rewrites the claim into scientific search queries.
+2. Search: OpenAlex and Semantic Scholar (over 300 million papers), Europe PMC, Google Fact Check Tools, Wikipedia, World Bank and Open Food Facts, in parallel.
+3. Rank: BM25 + embeddings fused with reciprocal rank fusion, then an LLM reranker; at most two passages per paper.
+4. Read: each passage is classified as supporting, refuting or context, with a verbatim quote (no verbatim quote, no vote).
+5. Verdict: a deterministic formula weighted by study quality (supported, refuted, mixed or not enough evidence).
+6. Answer: every sentence cited; citations, quotes and numbers are checked before the answer is shown.
+7. Tone: optional rewording (academic, casual, "mic drop") that cannot change the verdict, numbers or citations.
+
+## Notes
+- Free, no account, no ads. Fair-use limits per visitor and per day.
+- Not medical, legal or financial advice. Always read the cited sources.
+
+## Links
+- Home: https://www.factslap.app
+- How it works: https://www.factslap.app/how-it-works

@@ -1,0 +1,328 @@
+{
+ "claim": "Cracking your knuckles causes arthritis",
+ "lang": "en",
+ "plan": {
+  "claim": "Cracking your knuckles causes arthritis",
+  "lang": "en",
+  "subclaims": [
+   "Cracking your knuckles causes arthritis"
+  ],
+  "english_claim": "Cracking your knuckles causes arthritis",
+  "queries": [
+   "Cracking your knuckles causes arthritis",
+   "knuckle cracking osteoarthritis risk",
+   "habitual knuckle cracking hand osteoarthritis cohort study",
+   "knuckle cracking arthritis systematic review"
+  ],
+  "claim_type": "health",
+  "sources": [
+   "openalex",
+   "semantic_scholar",
+   "europe_pmc"
+  ]
+ },
+ "verdict": {
+  "label": "refuted",
+  "confidence": 0.87,
+  "supporting": 0,
+  "refuting": 4,
+  "explanation": "Support weight 0.00 vs refute weight 2.60 (by study quality); agreement 100%, strength 87%."
+ },
+ "evidence": [
+  {
+   "ref": 1,
+   "passage": {
+    "id": "openalex:W2564280607:0",
+    "source": "openalex",
+    "title": "Does knuckle popping lead to arthritis",
+    "text": "Q: Does knuckle popping lead to arthritis? Evidence-based answer: No, habitual knuckle popping, or cracking (over the course of several decades) isn't associated with clinical or radiographic evidence of osteoarthritis (strength of recommendation [SOR]: B, retrospective cohort and case control studies). However, attempting to pop the knuckles can produce acute soft tissue injury (SOR: C, case repo",
+    "url": "https://openalex.org/W2564280607",
+    "year": 2016,
+    "authors": [
+     "Tye Powers",
+     "Gary Kelsberg",
+     "Sarah M Safranek"
+    ],
+    "venue": "MOspace Institutional Repository (University of Missouri)",
+    "doi": null,
+    "corpus_id": null,
+    "study_type": "review",
+    "citation_count": 0,
+    "lang": "en",
+    "source_score": null
+   },
+   "stance": "refutes",
+   "quote": "No, habitual knuckle popping, or cracking (over the course of several decades) isn't associated with clinical or radiographic evidence of osteoarthritis (strength of recommendation [SOR]: B, retrospective cohort and case control studies).",
+   "rationale": "It directly states habitual cracking is not associated with osteoarthritis.",
+   "rank_score": 1.0
+  },
+  {
+   "ref": 2,
+   "passage": {
+    "id": "epmc:21383216:0",
+    "source": "europe_pmc",
+    "title": "Knuckle cracking and hand osteoarthritis.",
+    "text": "Background Previous studies have not shown a correlation between knuckle cracking (KC) and hand osteoarthritis (OA). However, one study showed an inverse correlation between KC and metacarpophalangeal joint OA. Methods We conducted a retrospective case-control study among persons aged 50 to 89 years who received a radiograph of the right hand during the last 5 years. Patients had radiographically ",
+    "url": "https://europepmc.org/article/MED/21383216",
+    "year": 2011,
+    "authors": [
+     "Deweber K",
+     "Olszewski M",
+     "Ortolano R."
+    ],
+    "venue": "Journal of the American Board of Family Medicine : JABFM",
+    "doi": "10.3122/jabfm.2011.02.100156",
+    "corpus_id": null,
+    "study_type": "observational",
+    "citation_count": 8,
+    "lang": "en",
+    "source_score": null
+   },
+   "stance": "refutes",
+   "quote": "Conclusions A history of habitual KC-including the total duration and total cumulative exposure-does not seem to be a risk factor for hand OA.",
+   "rationale": "The case-control study concludes habitual cracking is not a hand-OA risk factor.",
+   "rank_score": 0.5
+  },
+  {
+   "ref": 3,
+   "passage": {
+    "id": "epmc:PMC5339152:2",
+    "source": "europe_pmc",
+    "title": "\"Knuckle Cracking\": Can Blinded Observers Detect Changes with Physical Examination and Sonography?",
+    "text": "Results Comparing subjects with knuckle cracking with those who did not crack their knuckles, there was no differences in QuickDASH scores (knuckle crackers, 3.7 ± 5.2; nonknuckle crackers, 3.2 ± 6.3; mean difference, 0.6; 95% CI, -3.5 to 4.6; p = 0.786), laxity (knuckle crackers, 2.0 ± 1.8; nonknuckle crackers, 0.3 ± 0.7; mean difference, 1.7; 95% CI, 0.5-2.9; p = 0.191), and grip strength (preul",
+    "url": "https://europepmc.org/article/MED/28050816",
+    "year": 2017,
+    "authors": [
+     "Boutin RD",
+     "Netto AP",
+     "Nakamura D",
+     "Bateni C",
+     "Szabo RM",
+     "Cronan M"
+    ],
+    "venue": "Clinical orthopaedics and related research",
+    "doi": "10.1007/s11999-016-5215-3",
+    "corpus_id": null,
+    "study_type": "observational",
+    "citation_count": 6,
+    "lang": "en",
+    "source_score": null
+   },
+   "stance": "neutral",
+   "quote": "Conclusions We found no evidence of immediate adverse physical examination findings after knuckle cracking.",
+   "rationale": "It addresses immediate physical findings, not whether cracking causes arthritis.",
+   "rank_score": 0.25
+  },
+  {
+   "ref": 4,
+   "passage": {
+    "id": "openalex:W2800737611:0",
+    "source": "openalex",
+    "title": "Cracking the Cracked Knuckle",
+    "text": "The ‘old wives tale’ that habitual knuckle cracking leads to arthritis may now be considered myth. However, an investigation into the cause of the cracking sound and other long-term effects may not be as trivial. The following discussion presents two popular theories for the cause of the crack, and asks questions that may support or challenge either theory. In addition, several clinical trials are",
+    "url": "https://openalex.org/W2800737611",
+    "year": 2008,
+    "authors": [
+     "John Nick Gaetano"
+    ],
+    "venue": "Touro Scholar (Touro College)",
+    "doi": null,
+    "corpus_id": null,
+    "study_type": "review",
+    "citation_count": 0,
+    "lang": "en",
+    "source_score": null
+   },
+   "stance": "refutes",
+   "quote": "The ‘old wives tale’ that habitual knuckle cracking leads to arthritis may now be considered myth.",
+   "rationale": "The review explicitly characterizes the claimed link as a myth.",
+   "rank_score": 0.16666666666666666
+  },
+  {
+   "ref": 5,
+   "passage": {
+    "id": "openalex:W4409699767:16",
+    "source": "openalex",
+    "title": "Role of artificial intelligence in answering common patient queries: Osteoarthritis: A viewpoint",
+    "text": "It also debunked popular existing myths about OA such as “There is no scientific evidence to suggest that cracking your knuckles can lead to osteoarthritis.” It was also interesting to note that ChatSonic directed the users to seek advice from a health care provider for addressing specific concerns that involved personalized care and treatment, drug dosages, or safety issues. It also gave informat",
+    "url": "https://doi.org/10.1097/ph9.0000000000000074",
+    "year": 2025,
+    "authors": [
+     "Rohan Singhal"
+    ],
+    "venue": "Journal of the International Society of Physical and Rehabilitation Medicine",
+    "doi": "10.1097/ph9.0000000000000074",
+    "corpus_id": null,
+    "study_type": "other",
+    "citation_count": 0,
+    "lang": "en",
+    "source_score": null
+   },
+   "stance": "refutes",
+   "quote": "There is no scientific evidence to suggest that cracking your knuckles can lead to osteoarthritis.",
+   "rationale": "It explicitly says there is no scientific evidence for the claimed effect.",
+   "rank_score": 0.14285714285714285
+  }
+ ],
+ "answer": {
+  "text": "The claim is refuted. Reviews and observational research report that habitual knuckle cracking, including long-term and cumulative exposure, is not associated with clinical or radiographic osteoarthritis and does not appear to be a risk factor for hand osteoarthritis. [1][2] A review describes the belief that knuckle cracking causes arthritis as a myth, and another source states that there is no scientific evidence that it leads to osteoarthritis. [4][5] One study also found no immediate adverse findings after knuckle cracking. [3]",
+  "short": "Habitual knuckle cracking has not been shown to cause hand osteoarthritis or arthritis; available reviews and studies refute the claim. [1][2][4][5]",
+  "cited_refs": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ },
+ "styled_answer": {
+  "text": "Refuted. The knuckle-cracking-causes-arthritis tale is more myth than medical menace: reviews and observational research find that habitual cracking, even long-term and cumulative, is not linked to clinical or radiographic osteoarthritis or hand osteoarthritis risk. [1][2] Reviews say there is no scientific evidence for the claim, and one study found no immediate adverse effects. [3][4][5]",
+  "short": "Refuted: habitual knuckle cracking has not been shown to cause hand osteoarthritis or arthritis—the old warning is a myth, not evidence. [1][2][4][5]",
+  "cited_refs": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ },
+ "verification": {
+  "passed": true,
+  "checks": [
+   {
+    "name": "citations_exist",
+    "passed": true,
+    "detail": "5 citations, all valid"
+   },
+   {
+    "name": "has_citations",
+    "passed": true,
+    "detail": "answer cites evidence"
+   },
+   {
+    "name": "numbers_grounded",
+    "passed": true,
+    "detail": "every number appears in the sources"
+   },
+   {
+    "name": "quotes_verbatim",
+    "passed": true,
+    "detail": "4 quotes found word for word"
+   }
+  ]
+ },
+ "steps": [
+  {
+   "step": "plan",
+   "message": "Planned the search",
+   "ms": 1861,
+   "data": {
+    "queries": [
+     "Cracking your knuckles causes arthritis",
+     "knuckle cracking osteoarthritis risk",
+     "habitual knuckle cracking hand osteoarthritis cohort study",
+     "knuckle cracking arthritis systematic review"
+    ],
+    "sources": [
+     "openalex",
+     "semantic_scholar",
+     "europe_pmc"
+    ],
+    "subclaims": [
+     "Cracking your knuckles causes arthritis"
+    ],
+    "lang": "en",
+    "claim_type": "health"
+   }
+  },
+  {
+   "step": "search",
+   "message": "Found 65 passages",
+   "ms": 578,
+   "data": {
+    "per_source": {
+     "openalex": 47,
+     "semantic_scholar": "error: SourceError",
+     "europe_pmc": 18
+    }
+   }
+  },
+  {
+   "step": "rank",
+   "message": "Kept the 8 most relevant",
+   "ms": 4394,
+   "data": {
+    "candidates": 65,
+    "unique": 56,
+    "embeddings": true,
+    "reranker": true,
+    "notes": [],
+    "top": [
+     "Does knuckle popping lead to arthritis",
+     "Knuckle cracking and hand osteoarthritis.",
+     "\"Knuckle Cracking\": Can Blinded Observers Detect Changes with Physical Examination and Sonography?",
+     "\"Knuckle Cracking\": Can Blinded Observers Detect Changes with Physical Examination and Sonography?",
+     "Cracking the Cracked Knuckle"
+    ]
+   }
+  },
+  {
+   "step": "evidence",
+   "message": "Read the evidence",
+   "ms": 3665,
+   "data": {
+    "supports": 0,
+    "refutes": 4,
+    "neutral": 1
+   }
+  },
+  {
+   "step": "verdict",
+   "message": "refuted",
+   "ms": 0,
+   "data": {
+    "confidence": 0.87,
+    "why": "Support weight 0.00 vs refute weight 2.60 (by study quality); agreement 100%, strength 87%."
+   }
+  },
+  {
+   "step": "verify",
+   "message": "Checked citations and numbers",
+   "ms": 2605,
+   "data": {
+    "checks": [
+     {
+      "name": "citations_exist",
+      "passed": true,
+      "detail": "5 citations, all valid"
+     },
+     {
+      "name": "has_citations",
+      "passed": true,
+      "detail": "answer cites evidence"
+     },
+     {
+      "name": "numbers_grounded",
+      "passed": true,
+      "detail": "every number appears in the sources"
+     },
+     {
+      "name": "quotes_verbatim",
+      "passed": true,
+      "detail": "4 quotes found word for word"
+     }
+    ]
+   }
+  },
+  {
+   "step": "tone",
+   "message": "Tone: aggressive, intention: check",
+   "ms": 2087,
+   "data": {}
+  }
+ ],
+ "intention": "check",
+ "disclaimer": "The verdict is decided first, from the evidence alone. Tone and intention only change the wording, never the verdict or the sources. FactSlap summarises published research and can be wrong; it is not medical, legal or financial advice.",
+ "cost_usd": 0.0174,
+ "latency_ms": 15410
+}
